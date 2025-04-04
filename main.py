@@ -40,7 +40,9 @@ def cadastrar_cliente(dict_cliente_default = dict, dict_clientes = dict):
     dict_cliente['data_nascimento'].value() = input('\nInforme sua data de nascimento (DD/MM/AAAA): ')
     dict_cliente['cpf'] = input('\nInforme seu CPF:')
 
-    cpfs = [cliente['cpf'] for cliente in dict_clientes.values()]
+    cpfs = [cliente['cpf'] for cliente in dict_clientes.values()] # eu acho que aqui é dict_clientes no começo
+
+    if dict_cliente['cpf'].value()
 
     if dict_cliente['cpf'] in cpfs:
         print('codigo se o cpf ja existe')
