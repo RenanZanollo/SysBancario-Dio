@@ -1,6 +1,9 @@
 import datetime as dt
+import copy
 
 menu = '''
+
+Bem vindo a ReBank
 
 [D] Deposito
 [S] Sacar
@@ -9,11 +12,48 @@ menu = '''
 
 >> '''
 
+## criar função cadastrar cliente e criar conta, conta tem que ser atralda ao cliente
+## cliente deve ter: nome, data de anscimento, cpf, endereço (logadouro, bairro, cidade\sigla estdo)
+##criar conta: contas devem ser armazenadas em uma lista, uma conta é comporta por agencia numero
+## da conta e usuario, o numero da conta é sequencial, iniciando em 1. o numero da agencia é fixo"0001"
+## um usuario pode ter mais de uma conta, mas uma conta só pode ter 1 usuario
+
 saldo = 0
 limite = 500
 extrato = []
 numero_saques = 0
 LIMITE_SAQUES = 3
+
+dict_cliente_default = {
+                    'nome':'',
+                    'data_nascimento':'',
+                    'cpf':'',
+                    'endereco':{'estado':'', 'cidade':'', 'bairro':'', 'numero':''}
+}
+
+dict_clientes = {}
+
+def cadastrar_cliente(dict_cliente_default = dict, dict_clientes = dict):
+    dict_cliente = copy.deepcopy(dict_cliente_default)
+
+    dict_cliente['nome'].value() = input('Olá! Para criar sua conta na ReBank, informe seu nome:')
+    dict_cliente['data_nascimento'].value() = input('\nInforme sua data de nascimento (DD/MM/AAAA): ')
+    dict_cliente['cpf'] = input('\nInforme seu CPF:')
+
+    cpfs = [cliente['cpf'] for cliente in dict_clientes.values()]
+
+    if dict_cliente['cpf'] in cpfs:
+        print('codigo se o cpf ja existe')
+
+    dict_cliente['endereco']['estado'].value() = input('\nInforme seu estado/UF: ')
+    dict_cliente['endereco']['cidade'].value() = input('\nInforme sua cidade:')
+    dict_cliente['endereco']['bairro'].value() = input('\nInforme seu bairro: ')
+    dict_cliente['endereco']['numero'].value() = input('\nInforme seu logadouro:')
+
+
+
+def criar_conta():
+
 
 def deposito(saldo: float, extrato: list) -> tuple[float, list]:
     try:
@@ -88,8 +128,6 @@ while True:
 
     else:
         print("Operação inválida, tente novamente.")
-
-
 
 
 
