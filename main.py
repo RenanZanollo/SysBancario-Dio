@@ -229,6 +229,8 @@ while True:
 
     cadastrar_cliente(dict_clientes)
 
+    criar_conta()
+
     opcao = input(menu).upper()
 
     if opcao == "D":
